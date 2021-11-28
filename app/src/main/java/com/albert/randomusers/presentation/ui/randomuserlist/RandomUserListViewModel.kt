@@ -37,7 +37,9 @@ class RandomUserListViewModel @ViewModelInject constructor(
     private var firstTime = true
     private var cachedList: MutableList<RandomUserUIModel>? = mutableListOf()
 
-    fun getRandomUsersList(page: Int) {
+    private var page: Int = 1
+
+    fun getRandomUsersList() {
         viewModelScope.launch {
 
             if (page > 1) loadingRandomUserListOtherCalls.postValue(true)
@@ -47,21 +49,32 @@ class RandomUserListViewModel @ViewModelInject constructor(
             if (seed == null) seed = generateRandomSeed()
 
             val result = interactor.getRandomUserListUseCase(page, seed)
-            if (result is Resource.Success) {
-                loadingError.postValue("")
-                result.data?.let { resultData ->
-                    mutableUsersList.addAll(resultData.filter { !deletedUsersIdList.contains(it.id) && !mutableUsersList.contains(it) })
-                    randomUserList.postValue(mutableUsersList)
-                    loadingRandomUserListFirstCall.postValue(false)
-                    loadingRandomUserListOtherCalls.postValue(false)
+            when (result) {
+                is Resource.Success -> {
+                    loadingError.postValue("")
+                    result.data?.let { resultData ->
+                        mutableUsersList.addAll(resultData.filter {
+                            !deletedUsersIdList.contains(it.id) && !mutableUsersList.contains(
+                                it
+                            )
+                        })
+                        randomUserList.postValue(mutableUsersList)
+                        loadingRandomUserListFirstCall.postValue(false)
+                        loadingRandomUserListOtherCalls.postValue(false)
+                    }?:showErrorFromService(result.message)
+                    page += 1
+                }
+                is Resource.Error -> {
+                    showErrorFromService(result.message)
                 }
             }
-            if (result is Resource.Error) {
-                loadingError.postValue(result.message)
-                loadingRandomUserListFirstCall.postValue(false)
-                loadingRandomUserListOtherCalls.postValue(false)
-            }
         }
+    }
+
+    private fun showErrorFromService(message: String?) {
+        loadingError.postValue(message)
+        loadingRandomUserListFirstCall.postValue(false)
+        loadingRandomUserListOtherCalls.postValue(false)
     }
 
     fun deleteUserFromList(user: RandomUserUIModel) {
@@ -96,6 +109,10 @@ class RandomUserListViewModel @ViewModelInject constructor(
         val seed = (0..99).random().toString()
         dataPersistance.saveSeed(seed)
         return seed
+    }
+
+    fun getDeletedUsersListSize(): Int {
+        return deletedUsersIdList.size
     }
 
 }

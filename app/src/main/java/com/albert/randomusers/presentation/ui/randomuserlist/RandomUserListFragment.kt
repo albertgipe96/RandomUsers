@@ -31,9 +31,6 @@ class RandomUserListFragment : Fragment() {
 
     private var rvRandomUserList: RecyclerView? = null
     private var rvAdapter: RandomUserListAdapter? = null
-    private var deletedUsers = 0
-
-    private var page = 1
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,7 +42,7 @@ class RandomUserListFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel.getRandomUsersList(page)
+        viewModel.getRandomUsersList()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -65,7 +62,6 @@ class RandomUserListFragment : Fragment() {
             }
 
             override fun onItemDelete(item: RandomUserUIModel) {
-                deletedUsers += 1
                 rvRandomUserList?.recycledViewPool?.clear()
                 rvAdapter?.notifyDataSetChanged()
                 addToDeletedList(item)
@@ -83,9 +79,8 @@ class RandomUserListFragment : Fragment() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 val lastCompletelyVisibleItemPosition = (rvRandomUserList?.layoutManager as LinearLayoutManager).findLastCompletelyVisibleItemPosition()
-                if (lastCompletelyVisibleItemPosition == (rvAdapter?.itemCount ?:0 - deletedUsers) - 1) {
-                    page += 1
-                    viewModel.getRandomUsersList(page)
+                if ((lastCompletelyVisibleItemPosition == (rvAdapter?.itemCount ?:0 - viewModel.getDeletedUsersListSize()) - 1) && viewModel.loadingRandomUserListOtherCalls.value != true) {
+                    viewModel.getRandomUsersList()
                 }
             }
         })

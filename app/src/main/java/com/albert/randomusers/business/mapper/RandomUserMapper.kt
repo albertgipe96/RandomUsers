@@ -11,22 +11,44 @@ import com.albert.randomusers.presentation.models.RandomUserUIModel
 class RandomUserMapper {
 
     fun mapRandomUserBusinessModelToRandomUserUIModel(businessModel: RandomUserBusinessModel): RandomUserUIModel {
+        return businessModel.id?.let {
+            RandomUserUIModel(
+                id = businessModel.id,
+                name = RandomUserNameUIModel(
+                    first = businessModel.name?.first,
+                    last = businessModel.name?.last
+                ),
+                email = businessModel.email,
+                pictureThumbnail = businessModel.pictureThumbnail,
+                phone = businessModel.phone,
+                gender = businessModel.gender,
+                location = RandomUserLocationUIModel(
+                    street = businessModel.location?.street,
+                    city = businessModel.location?.city,
+                    state = businessModel.location?.state
+                ),
+                registeredDate = businessModel.registeredDate
+            )
+        } ?: failedRandomUser()
+    }
+
+    private fun failedRandomUser(): RandomUserUIModel {
         return RandomUserUIModel(
-            id = businessModel.id,
+            id = "--",
             name = RandomUserNameUIModel(
-                first = businessModel.name?.first,
-                last = businessModel.name?.last
+                first = "--",
+                last = "--"
             ),
-            email = businessModel.email,
-            pictureThumbnail = businessModel.pictureThumbnail,
-            phone = businessModel.phone,
-            gender = businessModel.gender,
+            email = "--",
+            pictureThumbnail = null,
+            phone = "--",
+            gender = "--",
             location = RandomUserLocationUIModel(
-                street = businessModel.location?.street,
-                city = businessModel.location?.city,
-                state = businessModel.location?.state
+                street = "--",
+                city = "--",
+                state = "--"
             ),
-            registeredDate = businessModel.registeredDate
+            registeredDate = "--"
         )
     }
 

@@ -46,7 +46,7 @@ class RandomUserDetailFragment : Fragment() {
         val tvUserLocationDetails: TextView = view?.findViewById(R.id.tv_random_user_location_details)
         val tvUserRegisteredDetails: TextView = view?.findViewById(R.id.tv_random_user_registered_details)
 
-        Picasso.get().load(user.pictureThumbnail).into(ivUserImage)
+        user.pictureThumbnail?.let { Picasso.get().load(user.pictureThumbnail).into(ivUserImage) }
         tvUserNameDetails.text = user.name?.first + " " + user.name?.last
         tvUserEmailDetails.text = user.email
         tvUserPhoneDetails.text = user.phone

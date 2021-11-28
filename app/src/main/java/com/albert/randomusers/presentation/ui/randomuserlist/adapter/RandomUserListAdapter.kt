@@ -28,7 +28,7 @@ class RandomUserListAdapter(private var randomUsers: MutableList<RandomUserUIMod
         holder.randomUserName.text = randomUser.name?.first + " " + randomUser.name?.last
         holder.randomUserEmail.text = randomUser.email
         holder.randomUserPhone.text = randomUser.phone
-        Picasso.get().load(randomUser.pictureThumbnail).into(holder.randomUserImage)
+        randomUser.pictureThumbnail?.let { Picasso.get().load(randomUser.pictureThumbnail).into(holder.randomUserImage) }
         holder.btnDeleteRandomUser.setOnClickListener {
             randomUsers.remove(randomUser)
             listener.onItemDelete(randomUser)
