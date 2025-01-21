@@ -2,6 +2,7 @@ import com.android.build.api.dsl.ApplicationExtension
 import com.development.buildlogic.convention.ExtensionType
 import com.development.buildlogic.convention.configureAndroidCompose
 import com.development.buildlogic.convention.configureBuildTypes
+import com.development.buildlogic.convention.configureKoin
 import com.development.buildlogic.convention.configureKotlinAndroid
 import com.development.buildlogic.convention.libs
 import org.gradle.api.Plugin
@@ -27,6 +28,7 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 configureKotlinAndroid(this)
                 configureBuildTypes(this, ExtensionType.APPLICATION)
                 configureAndroidCompose(this)
+                configureKoin(this)
             }
         }
     }

@@ -1,6 +1,7 @@
 import com.android.build.api.dsl.LibraryExtension
 import com.development.buildlogic.convention.ExtensionType
 import com.development.buildlogic.convention.configureBuildTypes
+import com.development.buildlogic.convention.configureKoin
 import com.development.buildlogic.convention.configureKotlinAndroid
 import com.development.buildlogic.convention.libs
 import org.gradle.api.Plugin
@@ -19,6 +20,7 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
             extensions.configure<LibraryExtension> {
                 configureKotlinAndroid(this)
                 configureBuildTypes(this, ExtensionType.LIBRARY)
+                configureKoin(this)
                 defaultConfig {
                     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
                     consumerProguardFiles("consumer-rules.pro")
