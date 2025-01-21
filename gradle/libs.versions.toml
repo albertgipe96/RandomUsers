@@ -11,6 +11,11 @@ composeBom = "2024.04.01"
 jetbrainsKotlinJvm = "2.0.0"
 androidTools = "31.2.2"
 composeCompiler = "1.5.9"
+appcompat = "1.7.0"
+material = "1.12.0"
+koin = "3.2.0"
+navigationCompose = "2.8.3"
+serializationJson = "1.7.3"
 
 # Project versions
 projectApplicationId = "com.development.randomusers"
@@ -19,9 +24,6 @@ projectMinSdkVersion = "26"
 projectTargetSdkVersion = "35"
 projectCompileSdkVersion = "35"
 projectVersionCode = "1"
-appcompat = "1.7.0"
-material = "1.12.0"
-koin = "3.2.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -42,6 +44,8 @@ koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin"
 koin-androidx-workmanager = { group = "io.insert-koin", name = "koin-androidx-workmanager", version.ref = "koin" }
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
 koin-androidx-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koin" }
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serializationJson" }
 
 # Gradle
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
@@ -59,3 +63,4 @@ randomusers-android-application = { id = "randomusers.android.application", vers
 randomusers-android-library = { id = "randomusers.android.library", version = "unspecified" }
 randomusers-android-library-compose = { id = "randomusers.android.library.compose", version = "unspecified" }
 android-library = { id = "com.android.library", version.ref = "agp" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

@@ -17,6 +17,7 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 apply("com.android.application")
                 apply("org.jetbrains.kotlin.android")
                 apply("org.jetbrains.kotlin.plugin.compose")
+                apply("org.jetbrains.kotlin.plugin.serialization")
             }
             extensions.configure<ApplicationExtension> {
                 defaultConfig {
@@ -29,6 +30,9 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 configureBuildTypes(this, ExtensionType.APPLICATION)
                 configureAndroidCompose(this)
                 configureKoin(this)
+            }
+            dependencies {
+                "implementation"(libs.findLibrary("kotlinx.serialization.json").get())
             }
         }
     }
