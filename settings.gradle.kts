@@ -23,3 +23,4 @@ dependencyResolutionManagement {
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 rootProject.name = "RandomUsers"
 include(":app")
+include(":feature:randomusers")
