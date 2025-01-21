@@ -16,6 +16,9 @@ material = "1.12.0"
 koin = "3.2.0"
 navigationCompose = "2.8.3"
 serializationJson = "1.7.3"
+room = "2.6.1"
+ksp = "2.0.0-1.0.21"
+devtoolsKsp = "2.0.20-1.0.24"
 
 # Project versions
 projectApplicationId = "com.development.randomusers"
@@ -46,21 +49,30 @@ koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = 
 koin-androidx-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koin" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serializationJson" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 
 # Gradle
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
 android-tools-common = { group = "com.android.tools", name = "common", version.ref = "androidTools" }
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+room-gradlePlugin = { group = "androidx.room", name = "room-gradle-plugin", version.ref = "room" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
+devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "devtoolsKsp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+room = { id = "androidx.room", version.ref = "room" }
+
 randomusers-android-application = { id = "randomusers.android.application", version = "unspecified" }
 randomusers-android-library = { id = "randomusers.android.library", version = "unspecified" }
 randomusers-android-library-compose = { id = "randomusers.android.library.compose", version = "unspecified" }
-android-library = { id = "com.android.library", version.ref = "agp" }
-kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+randomusers-room = { id = "randomusers.room", version = "unspecified" }

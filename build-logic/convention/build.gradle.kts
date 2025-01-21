@@ -8,6 +8,8 @@ dependencies {
     compileOnly(libs.android.gradlePlugin)
     compileOnly(libs.android.tools.common)
     compileOnly(libs.kotlin.gradlePlugin)
+    compileOnly(libs.ksp.gradlePlugin)
+    compileOnly(libs.room.gradlePlugin)
 }
 
 gradlePlugin {
@@ -23,6 +25,10 @@ gradlePlugin {
         register("androidLibraryCompose") {
             id = "randomusers.android.library.compose"
             implementationClass = "AndroidLibraryComposeConventionPlugin"
+        }
+        register("room") {
+            id = "randomusers.room"
+            implementationClass = "RoomLibraryConventionPlugin"
         }
     }
 }
