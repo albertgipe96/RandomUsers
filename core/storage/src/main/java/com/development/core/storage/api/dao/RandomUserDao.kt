@@ -29,6 +29,6 @@ interface RandomUserDao {
     suspend fun clearAll()
 
     @Query("DELETE FROM randomUsers WHERE id=:id")
-    suspend fun deleteRandomUser(id: Int)
+    suspend fun deleteRandomUser(id: String)
 
 }

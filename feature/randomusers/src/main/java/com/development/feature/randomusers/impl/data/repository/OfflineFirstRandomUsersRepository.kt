@@ -41,7 +41,14 @@ class OfflineFirstRandomUsersRepository(
         }
     }
 
-    override fun deleteRandomUser(id: String) {
+    override suspend fun deleteRandomUser(id: String): Result<Unit> {
+        return try {
+            localRandomUsersDataSource.deleteRandomUser(id)
+            Result.success(Unit)
+        } catch (e: Exception) {
+            if (e is CancellationException) throw e
+            Result.failure(e)
+        }
 
     }
 }

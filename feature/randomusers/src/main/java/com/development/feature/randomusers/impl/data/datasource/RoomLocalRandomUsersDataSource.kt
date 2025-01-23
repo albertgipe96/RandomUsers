@@ -27,12 +27,8 @@ class RoomLocalRandomUsersDataSource(
         return randomUserDao.getRandomUserById(id).first().toDomain()
     }
 
-    override suspend fun deleteRandomUser(id: Int) {
-        randomUserDao.deleteRandomUser(id)
-    }
-
-    override suspend fun deleteAll() {
-        randomUserDao.clearAll()
+    override suspend fun deleteRandomUser(id: String) {
+        return randomUserDao.deleteRandomUser(id)
     }
 
     override suspend fun updateRandomUsers(list: List<RandomUser>) {

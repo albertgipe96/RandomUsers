@@ -7,5 +7,5 @@ import kotlinx.coroutines.flow.Flow
 interface RandomUsersRepository {
     fun getRandomUsers(): Flow<PagingData<RandomUser>>
     suspend fun getRandomUser(id: String): Result<RandomUser>
-    fun deleteRandomUser(id: String)
+    suspend fun deleteRandomUser(id: String): Result<Unit>
 }

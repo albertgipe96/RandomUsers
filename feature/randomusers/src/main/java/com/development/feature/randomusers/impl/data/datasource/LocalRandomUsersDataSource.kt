@@ -8,7 +8,6 @@ interface LocalRandomUsersDataSource {
     fun getRandomUsers(): PagingSource<Int, RandomUserEntity>
     fun getRandomUsersList(): List<RandomUser>
     suspend fun getRandomUser(id: String): RandomUser
-    suspend fun deleteRandomUser(id: Int)
-    suspend fun deleteAll()
+    suspend fun deleteRandomUser(id: String)
     suspend fun updateRandomUsers(list: List<RandomUser>)
 }
