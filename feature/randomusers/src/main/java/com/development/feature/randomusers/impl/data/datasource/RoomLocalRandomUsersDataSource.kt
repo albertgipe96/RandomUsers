@@ -11,11 +11,16 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 class RoomLocalRandomUsersDataSource(
-    private val randomUserDao: RandomUserDao
+    private val randomUserDao: RandomUserDao,
+    private val mapper: DataToDomainMapper
 ) : LocalRandomUsersDataSource {
 
     override fun getRandomUsers(): PagingSource<Int,RandomUserEntity> {
-        return randomUserDao.getRandomUsersList()
+        return randomUserDao.getRandomUsersPagingSource()
+    }
+
+    override fun getRandomUsersList(): List<RandomUser> = with(mapper) {
+        return randomUserDao.getRandomUsersList().map { it.toDomain() }
     }
 
     override suspend fun deleteRandomUser(id: Int) {

@@ -14,7 +14,10 @@ import kotlinx.coroutines.flow.Flow
 interface RandomUserDao {
 
     @Query("SELECT * FROM randomUsers")
-    fun getRandomUsersList(): PagingSource<Int, RandomUserEntity>
+    fun getRandomUsersPagingSource(): PagingSource<Int, RandomUserEntity>
+
+    @Query("SELECT * FROM randomUsers")
+    fun getRandomUsersList(): List<RandomUserEntity>
 
     @Query("SELECT * FROM randomUsers WHERE id=:id")
     suspend fun getRandomUserById(id: Int): List<RandomUserEntity>
