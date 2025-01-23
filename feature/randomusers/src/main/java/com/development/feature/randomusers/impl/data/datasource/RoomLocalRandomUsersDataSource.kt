@@ -23,6 +23,10 @@ class RoomLocalRandomUsersDataSource(
         return randomUserDao.getRandomUsersList().map { it.toDomain() }
     }
 
+    override suspend fun getRandomUser(id: String): RandomUser = with(mapper) {
+        return randomUserDao.getRandomUserById(id).first().toDomain()
+    }
+
     override suspend fun deleteRandomUser(id: Int) {
         randomUserDao.deleteRandomUser(id)
     }

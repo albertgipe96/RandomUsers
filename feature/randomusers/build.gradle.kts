@@ -16,6 +16,10 @@ dependencies {
     implementation(libs.androidx.paging.compose)
     implementation(libs.paging.common)
 
+    // Coil
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
+
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)

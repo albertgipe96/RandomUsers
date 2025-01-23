@@ -14,6 +14,7 @@ import com.development.feature.randomusers.impl.domain.model.RandomUser
 import com.development.feature.randomusers.impl.domain.repository.RandomUsersRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import kotlin.coroutines.cancellation.CancellationException
 
 @OptIn(ExperimentalPagingApi::class)
 class OfflineFirstRandomUsersRepository(
@@ -28,6 +29,16 @@ class OfflineFirstRandomUsersRepository(
             remoteMediator = remoteMediator,
             pagingSourceFactory = { localRandomUsersDataSource.getRandomUsers() }
         ).flow.map { pagingData -> pagingData.map { it.toDomain() } }
+    }
+
+    override suspend fun getRandomUser(id: String): Result<RandomUser> {
+        return try {
+            val randomUser = localRandomUsersDataSource.getRandomUser(id)
+            Result.success(randomUser)
+        } catch (e: Exception) {
+            if (e is CancellationException) throw e
+            Result.failure(e)
+        }
     }
 
     override fun deleteRandomUser(id: String) {

@@ -9,10 +9,10 @@ internal fun Project.configureKoin(
 ) {
     commonExtension.run {
         dependencies {
-            "implementation"(libs.findLibrary("koin.core").get())
-            "implementation"(libs.findLibrary("koin.androidx.workmanager").get())
             "implementation"(libs.findLibrary("koin.android").get())
+            "implementation"(libs.findLibrary("koin.androidx.navigation").get())
             "implementation"(libs.findLibrary("koin.androidx.compose").get())
+            "testImplementation"(libs.findLibrary("koin.test.junit4").get())
         }
     }
 }

@@ -13,7 +13,7 @@ androidTools = "31.2.2"
 composeCompiler = "1.5.9"
 appcompat = "1.7.0"
 material = "1.12.0"
-koin = "3.2.0"
+koin = "3.4.0"
 navigationCompose = "2.8.3"
 serializationJson = "1.7.3"
 room = "2.6.1"
@@ -21,6 +21,7 @@ ksp = "2.0.0-1.0.21"
 devtoolsKsp = "2.0.20-1.0.24"
 retrofit = "2.11.0"
 paging = "3.3.5"
+coil = "3.0.4"
 
 # Project versions
 projectApplicationId = "com.development.randomusers"
@@ -45,10 +46,10 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
-koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
-koin-androidx-workmanager = { group = "io.insert-koin", name = "koin-androidx-workmanager", version.ref = "koin" }
-koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
-koin-androidx-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koin" }
+koin-android = { module = "io.insert-koin:koin-android",version.ref = "koin" }
+koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
+koin-androidx-navigation = { module = "io.insert-koin:koin-androidx-navigation", version.ref = "koin" }
+koin-test-junit4 = { module = "io.insert-koin:koin-test-junit4", version.ref = "koin" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serializationJson" }
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
@@ -60,6 +61,8 @@ retrofit-converter-gson = { group = "com.squareup.retrofit2", name = "converter-
 androidx-paging = { group = "androidx.paging", name = "paging-runtime-ktx", version.ref = "paging" }
 androidx-paging-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "paging" }
 paging-common = { group = "androidx.paging", name = "paging-common", version.ref = "paging" }
+coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }
+coil-network-okhttp = { group = "io.coil-kt.coil3", name = "coil-network-okhttp", version.ref = "coil" }
 
 # Gradle
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }

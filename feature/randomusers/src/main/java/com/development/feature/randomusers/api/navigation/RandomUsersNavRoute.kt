@@ -4,5 +4,5 @@ import kotlinx.serialization.Serializable
 
 sealed interface RandomUsersNavRoute {
     @Serializable data object List : RandomUsersNavRoute
-    @Serializable data class Detail(val id: Int) : RandomUsersNavRoute
+    @Serializable data class Detail(val id: String) : RandomUsersNavRoute
 }

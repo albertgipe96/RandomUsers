@@ -20,7 +20,7 @@ interface RandomUserDao {
     fun getRandomUsersList(): List<RandomUserEntity>
 
     @Query("SELECT * FROM randomUsers WHERE id=:id")
-    suspend fun getRandomUserById(id: Int): List<RandomUserEntity>
+    suspend fun getRandomUserById(id: String): List<RandomUserEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(randomUsers: List<RandomUserEntity>)
