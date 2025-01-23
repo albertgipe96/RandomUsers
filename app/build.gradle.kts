@@ -12,6 +12,7 @@ android {
 dependencies {
     implementation(projects.feature.randomusers)
     implementation(projects.core.storage)
+    implementation(projects.core.network)
 
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.ui)

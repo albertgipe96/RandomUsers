@@ -56,12 +56,15 @@ internal fun Project.configureBuildTypes(
 
 private fun BuildType.configureDebugBuildType() {
     // Debug configurations
+    buildConfigField("String", "BASE_URL", "\"https://randomuser.me\"") // Staging base url
 }
 
 private fun BuildType.configureReleaseBuildType(
     commonExtension: CommonExtension<*, *, *, *, *, *>
 ) {
     // Release configurations
+    buildConfigField("String", "BASE_URL", "\"https://randomuser.me\"") // Prod base url
+
     isMinifyEnabled = true
     proguardFiles(
         commonExtension.getDefaultProguardFile("proguard-android-optimize.txt"),

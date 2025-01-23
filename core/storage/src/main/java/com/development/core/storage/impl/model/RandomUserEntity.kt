@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "randomUsers")
 data class RandomUserEntity(
-    @PrimaryKey val id: Int,
+    @PrimaryKey val id: String,
     val name: String,
     val surname: String,
     val email: String,
@@ -15,5 +15,5 @@ data class RandomUserEntity(
     val street: String,
     val city: String,
     val state: String,
-    val registeredDate: Long
+    val registeredDate: String
 )

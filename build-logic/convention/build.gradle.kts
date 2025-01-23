@@ -30,5 +30,9 @@ gradlePlugin {
             id = "randomusers.room"
             implementationClass = "RoomLibraryConventionPlugin"
         }
+        register("retrofit") {
+            id = "randomusers.retrofit"
+            implementationClass = "RetrofitLibraryConventionPlugin"
+        }
     }
 }

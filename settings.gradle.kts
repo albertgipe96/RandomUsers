@@ -25,3 +25,4 @@ rootProject.name = "RandomUsers"
 include(":app")
 include(":feature:randomusers")
 include(":core:storage")
+include(":core:network")

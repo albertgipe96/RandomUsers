@@ -14,4 +14,5 @@ val storageModule = module {
         ).build()
     }
     single { get<RandomUsersDatabase>().randomUserDao }
+    single { get<RandomUsersDatabase>().remoteKeyDao }
 }
