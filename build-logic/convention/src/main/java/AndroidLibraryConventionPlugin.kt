@@ -29,6 +29,8 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
             }
             dependencies {
                 "implementation"(libs.findLibrary("kotlinx.serialization.json").get())
+                "testImplementation"(libs.findLibrary("mockk.testing").get())
+                "testImplementation"(libs.findLibrary("kotlinx.coroutines.test").get())
             }
         }
     }

@@ -22,6 +22,8 @@ devtoolsKsp = "2.0.20-1.0.24"
 retrofit = "2.11.0"
 paging = "3.3.5"
 coil = "3.0.4"
+mockkVersion = "1.13.13"
+coroutinesTest = "1.6.0"
 
 # Project versions
 projectApplicationId = "com.development.randomusers"
@@ -52,6 +54,7 @@ koin-androidx-navigation = { module = "io.insert-koin:koin-androidx-navigation",
 koin-test-junit4 = { module = "io.insert-koin:koin-test-junit4", version.ref = "koin" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serializationJson" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutinesTest" }
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
@@ -63,6 +66,7 @@ androidx-paging-compose = { group = "androidx.paging", name = "paging-compose", 
 paging-common = { group = "androidx.paging", name = "paging-common", version.ref = "paging" }
 coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }
 coil-network-okhttp = { group = "io.coil-kt.coil3", name = "coil-network-okhttp", version.ref = "coil" }
+mockk-testing = { module = "io.mockk:mockk", version.ref = "mockkVersion" }
 
 # Gradle
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
