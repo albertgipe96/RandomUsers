@@ -20,7 +20,7 @@ class GetRandomUsersList(
             val deletedIds = randomUsersRepository.getDeletedIds()
             randomUsersRepository.getRandomUsers()
                 .map { it.filter { it.id !in deletedIds } } // Filter by deleted ones
-                .flowOn(Dispatchers.IO)
+                .flowOn(coroutineDispatcher)
         }
     }
 }
