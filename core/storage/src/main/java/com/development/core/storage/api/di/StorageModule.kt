@@ -15,4 +15,5 @@ val storageModule = module {
     }
     single { get<RandomUsersDatabase>().randomUserDao }
     single { get<RandomUsersDatabase>().remoteKeyDao }
+    single { get<RandomUsersDatabase>().deletedIdsDao }
 }

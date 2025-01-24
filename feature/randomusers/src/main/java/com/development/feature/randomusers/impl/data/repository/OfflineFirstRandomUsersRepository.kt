@@ -7,6 +7,7 @@ import androidx.paging.PagingData
 import androidx.paging.RemoteMediator
 import androidx.paging.map
 import com.development.core.storage.impl.model.RandomUserEntity
+import com.development.feature.randomusers.impl.data.datasource.DeletedIdsDataSource
 import com.development.feature.randomusers.impl.data.datasource.LocalRandomUsersDataSource
 import com.development.feature.randomusers.impl.data.datasource.RemoteRandomUsersDataSource
 import com.development.feature.randomusers.impl.data.mapper.DataToDomainMapper
@@ -20,7 +21,8 @@ import kotlin.coroutines.cancellation.CancellationException
 class OfflineFirstRandomUsersRepository(
     private val localRandomUsersDataSource: LocalRandomUsersDataSource,
     private val remoteMediator: RemoteMediator<Int, RandomUserEntity>,
-    private val mapper: DataToDomainMapper
+    private val mapper: DataToDomainMapper,
+    private val deletedIdsDataSource: DeletedIdsDataSource
 ) : RandomUsersRepository {
 
     override fun getRandomUsers(): Flow<PagingData<RandomUser>> = with(mapper) {
@@ -44,11 +46,15 @@ class OfflineFirstRandomUsersRepository(
     override suspend fun deleteRandomUser(id: String): Result<Unit> {
         return try {
             localRandomUsersDataSource.deleteRandomUser(id)
+            deletedIdsDataSource.insertDeletedId(id)
             Result.success(Unit)
         } catch (e: Exception) {
             if (e is CancellationException) throw e
             Result.failure(e)
         }
+    }
 
+    override suspend fun getDeletedIds(): List<String> {
+        return deletedIdsDataSource.getDeletedIds()
     }
 }

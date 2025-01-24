@@ -45,12 +45,14 @@ class RandomUsersListViewModel(
     val events: SharedFlow<RandomUsersListEvent> = _events
 
     init {
-        val randomUsersPagingDataFlow: Flow<PagingData<RandomUserItemUi>> = with(domainToUiMapper) {
-            getRandomUsersList()
-                .map { it.map { randomUser -> randomUser.toRandomUserItemUi() } }
-                .cachedIn(viewModelScope)
+        viewModelScope.launch {
+            val randomUsersPagingDataFlow: Flow<PagingData<RandomUserItemUi>> = with(domainToUiMapper) {
+                getRandomUsersList()
+                    .map { it.map { randomUser -> randomUser.toRandomUserItemUi() } }
+                    .cachedIn(viewModelScope)
+            }
+            _uiState.value = RandomUsersListUiState.Loaded(randomUsersPagingDataFlow)
         }
-        _uiState.value = RandomUsersListUiState.Loaded(randomUsersPagingDataFlow)
     }
 
     fun onAction(action: RandomUsersListAction) {

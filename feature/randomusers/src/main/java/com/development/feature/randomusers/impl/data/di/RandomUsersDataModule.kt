@@ -5,10 +5,12 @@ package com.development.feature.randomusers.impl.data.di
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.RemoteMediator
 import com.development.core.storage.impl.model.RandomUserEntity
+import com.development.feature.randomusers.impl.data.datasource.DeletedIdsDataSource
 import com.development.feature.randomusers.impl.data.datasource.KeyDataSource
 import com.development.feature.randomusers.impl.data.datasource.LocalRandomUsersDataSource
 import com.development.feature.randomusers.impl.data.datasource.RemoteRandomUsersDataSource
 import com.development.feature.randomusers.impl.data.datasource.RetrofitRemoteRandomUsersDataSource
+import com.development.feature.randomusers.impl.data.datasource.RoomDeletedIdsDataSource
 import com.development.feature.randomusers.impl.data.datasource.RoomKeyDataSource
 import com.development.feature.randomusers.impl.data.datasource.RoomLocalRandomUsersDataSource
 import com.development.feature.randomusers.impl.data.mapper.DataToDomainMapper
@@ -23,6 +25,7 @@ val randomUsersDataModule = module {
     factoryOf(::RoomLocalRandomUsersDataSource).bind<LocalRandomUsersDataSource>()
     factoryOf(::RetrofitRemoteRandomUsersDataSource).bind<RemoteRandomUsersDataSource>()
     factoryOf(::RoomKeyDataSource).bind<KeyDataSource>()
+    factoryOf(::RoomDeletedIdsDataSource).bind<DeletedIdsDataSource>()
     factoryOf(::RandomUsersRemoteMediator).bind<RemoteMediator<Int, RandomUserEntity>>()
     factoryOf(::DataToDomainMapper)
     factoryOf(::OfflineFirstRandomUsersRepository).bind<RandomUsersRepository>()
